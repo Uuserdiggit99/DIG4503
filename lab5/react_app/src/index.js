@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Posts from './Posts';
-
+import App from './App';
+//Lab 5
 ReactDOM.render(
   <React.StrictMode>
-    <Posts />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
