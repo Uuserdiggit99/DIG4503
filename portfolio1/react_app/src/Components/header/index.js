@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component} from 'react';
 import react from './images/react.png';
 import "./index.css";
 export default class Header extends Component {
