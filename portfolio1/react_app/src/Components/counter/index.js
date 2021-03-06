@@ -114,6 +114,7 @@ class Counter extends Component{
   componentWillUnmount(){
       console.log("componentWillUnmount Ran!");
       this.setState({ count: this.state.count=0 });
+      this.setState({ number: this.state.count="|   Zero" });
     }/*Executes right before a component is unmounted. */
 
   
