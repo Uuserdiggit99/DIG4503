@@ -1,6 +1,6 @@
 {
 	"name": "participationActivity8",
-	"main": "index.js",
+	"main": "participation8.js",
 	"scripts":{
 		"server": "nodemon index.js"
 		},
