@@ -28,7 +28,7 @@ express.get("/people/:person",
         if (names.includes(person)){
             res.json({name: person});
         } else {
-                res.json({name: "Name is not available"});
+                res.json({name: "not found"});
             }
         
         });
@@ -41,7 +41,7 @@ express.get("/search/:name",
         if (results !=0){
              res.json({search: results});
         } else {
-                 res.json({search: "Name is not available"});
+                 res.json({search: "not found"});
             }
         
         });
