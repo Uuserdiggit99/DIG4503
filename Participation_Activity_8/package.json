@@ -1,0 +1,12 @@
+{
+	"name": "participationActivity8",
+	"main": "index.js",
+	"scripts":{
+		"server": "nodemon index.js"
+		},
+	"type": "module",
+	"dependencies":{
+		"express": "^4.17.1",
+		"nodemon": "^2.07"
+		}
+}
