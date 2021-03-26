@@ -11,7 +11,7 @@
 
 <body>
 
-<form>
+<form onsubmit="readName(event)">
     <fieldset>
 
         <legend>
@@ -20,14 +20,14 @@
         
         <p>
             Name:<br>
-            <input type="text" name="name">
+            <input type="text" id="name">
         </p>
         
         <button type="submit" name="nameSubmit" title="Submit">Submit Name</button>
     </fieldset> 
 </form>
 
-<form>
+<form onsubmit="readAge(event)">
     <fieldset>
         
         <legend>
@@ -36,15 +36,40 @@
         
         <p>
             Age:<br/>
-            <input type="text" name="age">
+            <input type="number" id="age">
         </p>
 
         <button type="submit" name="ageSubmit" title="Submit">Submit Age</button>
      </fieldset>    
 </form>
 
-<div id="message"></div>
+
+<fieldset>
+
+        <legend>
+                <h2>Reporting Area</h2>
+        </legend>
+        
+        <div id="message">No Message is available</div>
+        
+</fieldset> 
+
 <script>
+
+    function readName(event){
+        event.preventDefault();
+        console.log("Age Submit Button Clicked");
+        
+         let name =document.getElementById("name").value;
+         console.log("Value of name is ", name);
+    }
+    
+    function readAge(event){
+        event.preventDefault();
+        console.log("Name Submit Button Clicked");
+        let age =document.getElementById("age").value;
+         console.log("Value of age is ", age);
+    }
     
 </script>
 </body>
