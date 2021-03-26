@@ -23,7 +23,7 @@
             <input type="text" id="name">
         </p>
         
-        <button type="submit" name="nameSubmit" title="Submit">Submit Name</button>
+        <button type="submit" id="nameSubmit" title="Submit">Submit Name</button>
     </fieldset> 
 </form>
 
@@ -39,8 +39,25 @@
             <input type="number" id="age">
         </p>
 
-        <button type="submit" name="ageSubmit" title="Submit">Submit Age</button>
+        <button type="submit" id="ageSubmit" title="Submit">Submit Age</button>
      </fieldset>    
+</form>
+
+<form onsubmit="create(event)">
+    <fieldset>
+    <legend>
+                <h2>Add a new Employee Name and Age below</h2>
+    </legend>
+    
+    New Name:<br>
+    <input placeholder="new name" tpe="text" id="newName"><br><br>
+    New Age:<br>
+    <input placeholder="new age" type="number" id="newAge"><br>
+    
+    
+    <button type="submit" id="createSubmit" title="Submit">Submit</button>
+    
+    </fieldset>
 </form>
 
 
@@ -49,27 +66,73 @@
         <legend>
                 <h2>Reporting Area</h2>
         </legend>
-        
         <div id="message">No Message is available</div>
         
 </fieldset> 
 
 <script>
 
+    function create(event){
+        event.preventDefault();
+        console.log("Create Employee Submit Button Clicked");
+        
+        let newName =document.getElementById("newName").value;
+        let newAge =document.getElementById("newAge").value;
+        
+        console.log("newName: ", newName);
+        console.log("newAge: ", newAge );
+    }
+    
     function readName(event){
         event.preventDefault();
         console.log("Age Submit Button Clicked");
         
          let name =document.getElementById("name").value;
          console.log("Value of name is ", name);
+         
+         fetch("/employees/" + name)
+         
+          .then((res)=>{
+                    return res.json();
+                })
+                
+                .then((processed)=>{
+                        let reporting = document.getElementById("message");
+                        
+                        if(processed.Error ){
+                            reporting.innerText = processed.Error;
+                            console.log("Name Not Found, Error", reporting.innerText);
+                        } else {
+                            reporting.innerText = processed.age;
+                            console.log("Name Exists, Reporting: ", reporting.innerText);
+                        }
+                    });  
     }
     
     function readAge(event){
         event.preventDefault();
         console.log("Name Submit Button Clicked");
+        
         let age =document.getElementById("age").value;
-         console.log("Value of age is ", age);
-    }
+        console.log("Value of age is ", age);
+        fetch("/ages/" + age)
+        
+            .then((res)=>{
+                    return res.json();
+                })
+                
+                .then((processed)=>{
+                        let reporting = document.getElementById("message");
+                        
+                        if(processed.Error){
+                            reporting.innerText = processed.Error;
+                            console.log("Age Not Found, Error", reporting.innerText);
+                        } else {
+                            reporting.innerText = processed.name;
+                            console.log("Age Exists, Reporting: ", reporting.innerText);
+                        }
+                    });
+        }
     
 </script>
 </body>
