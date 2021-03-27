@@ -46,7 +46,7 @@ App.post("/employees/:name/:age",(req,res)=>{
     database.push(result);
     
 
-    fs.writeFileSync("database.json", json.stringify(database, null, '\t'));
+    fs.writeFileSync("database.json", JSON.stringify(database, null, '\t'));
     
     res.json(result);
   
