@@ -1,6 +1,6 @@
 {
-    "name": "lab8",
-    "description": "Lab 8 Assignment",
+    "name": "lab9",
+    "description": "Lab 9 Assignment",
     "main": "index.js",
     "scripts": {
         "server": "nodemon index.js"
