@@ -74,31 +74,24 @@
         event.preventDefault();
         console.log("Create Employee Submit Button Clicked");
         
-        let newName =document.getElementById("newName").value;
-        let newAge =document.getElementById("newAge").value;
+        let name =document.getElementById("newName").value;
+        let age =document.getElementById("newAge").value;
         
-        console.log("newName: ", newName);
-        console.log("newAge: ", newAge );
+        console.log("newName: ", name);
+        console.log("newAge: ", age );
         
-        fetch("/employees/" + newName + "/" + newAge,{
+        fetch("/employees/"+name+"/"+age,{
         
-            "method": "post"
+            "method": "POST"
             
         }).then((res)=>{
+                
+                if(!res.ok){console.log("something is wrong");}
                 return res.json();
+                
             }).then((processed) =>{
                 console.log("Processed is: ", processed);
                 
-                let reporting = document.getElementById("message");
-                
-                if(processed){
-                            reporting.innerText = "Processed";
-                            console.log("Processed?", reporting.innerText);
-                        } else {
-                            reporting.innerText = "Not Processed?";
-                            console.log("Not Processed?: ", reporting.innerText);
-                        }
-        
         }//then arrow function close
         );//then close
         

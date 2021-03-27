@@ -36,7 +36,7 @@ App.get("/ages/:number",(req,res)=>{
     res.json(ages);
 })
 
-App.post("employees/:name/:age", (req,res)=> {
+App.post("/employees/:name/:age",(req,res)=>{
     
     let result = {
         "name": req.params.name,
@@ -45,13 +45,11 @@ App.post("employees/:name/:age", (req,res)=> {
 
     database.push(result);
     
+
+    fs.writeFileSync("database.json", json.stringify(database, null, '\t'));
     
-
-    fs.writeFileSync("database.json", json.stringify(database, null, "\t"));
-
     res.json(result);
   
-    
 });//App.Post Close
 
 
