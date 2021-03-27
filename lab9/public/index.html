@@ -85,6 +85,9 @@
         .then((res)=>{
                 
                 if(!res.ok){console.log("something is wrong");}
+                let reporting = document.getElementById("message");
+                reporting.innerText = "New Employee Name and Age Created";
+                console.log("reporting: ", reporting.innerText);
                 return res.json();
                 
             }).then((processed) =>{
