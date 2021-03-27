@@ -70,7 +70,7 @@
 
 <script>
 
-    function create(event){
+    function create(event){//Adds a new employee name and age to database.json
         event.preventDefault();
         console.log("Create Employee Submit Button Clicked");
         
@@ -79,11 +79,34 @@
         
         console.log("newName: ", newName);
         console.log("newAge: ", newAge );
-    }
+        
+        fetch("/employees/" + newName + "/" + newAge,{
+        
+            "method": "post"
+            
+        }).then((res)=>{
+                return res.json();
+            }).then((processed) =>{
+                console.log("Processed is: ", processed);
+                
+                let reporting = document.getElementById("message");
+                
+                if(processed){
+                            reporting.innerText = "Processed";
+                            console.log("Processed?", reporting.innerText);
+                        } else {
+                            reporting.innerText = "Not Processed?";
+                            console.log("Not Processed?: ", reporting.innerText);
+                        }
+        
+        }//then arrow function close
+        );//then close
+        
+    }// Create Function Close
     
-    function readName(event){
+    function readName(event){// If name exists, return the age associated with the name form database.json to the reporting area
         event.preventDefault();
-        console.log("Age Submit Button Clicked");
+        console.log("Name Submit Button Clicked");
         
          let name =document.getElementById("name").value;
          console.log("Value of name is ", name);
@@ -105,11 +128,11 @@
                             console.log("Name Exists, Reporting: ", reporting.innerText);
                         }
                     });  
-    }
+    }// readName function close
     
-    function readAge(event){
+    function readAge(event){// If age exists, return the name associated with the age form database.json to the reporting area
         event.preventDefault();
-        console.log("Name Submit Button Clicked");
+        console.log("Age Submit Button Clicked");
         
         let age =document.getElementById("age").value;
         console.log("Value of age is ", age);
@@ -130,7 +153,7 @@
                             console.log("Age Exists, Reporting: ", reporting.innerText);
                         }
                     });
-        }
+        }// readAge function close
     
 </script>
 </body>
