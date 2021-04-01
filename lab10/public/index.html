@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- DIG4503 ,Lab 9-->
+	<title>Lab 9</title>
+    <meta charset="UTF-8"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+
+<form onsubmit="readName(event)">
+    <fieldset>
+
+        <legend>
+            <h2>Enter a Name Below</h2>
+        </legend>
+        
+        <p>
+            Name:<br>
+            <input type="text" id="name">
+        </p>
+        
+        <button type="submit" id="nameSubmit" title="Submit">Submit Name</button>
+    </fieldset> 
+</form>
+
+<form onsubmit="readAge(event)">
+    <fieldset>
+        
+        <legend>
+                <h2>Enter an Age Below</h2>
+        </legend>
+        
+        <p>
+            Age:<br/>
+            <input type="number" id="age">
+        </p>
+
+        <button type="submit" id="ageSubmit" title="Submit">Submit Age</button>
+     </fieldset>    
+</form>
+
+<form onsubmit="create(event)">
+    <fieldset>
+    <legend>
+                <h2>Add a new Employee Name and Age below</h2>
+    </legend>
+    
+    New Name:<br>
+    <input placeholder="new name" tpe="text" id="newName"><br><br>
+    New Age:<br>
+    <input placeholder="new age" type="number" id="newAge"><br>
+    
+    
+    <button type="submit" id="createSubmit" title="Submit">Submit</button>
+    
+    </fieldset>
+</form>
+
+
+<fieldset>
+
+        <legend>
+                <h2>Reporting Area</h2>
+        </legend>
+        <div id="message">No Message is available</div>
+        
+</fieldset> 
+
+<script>
+
+    function create(event){//Adds a new employee name and age to database.json. This should work now. I was getting 500 and 404 erros for a while because I did not realize I should have capitalized JSON.stringify in index.js. 
+        event.preventDefault();
+        console.log("Create Employee Submit Button Clicked");
+        
+        let name =document.getElementById("newName").value;
+        let age =document.getElementById("newAge").value;
+        
+        console.log("newName: ", name);
+        console.log("newAge: ", age );
+        
+        fetch("/employees/"+name+"/"+age,{"method": "post"})
+        
+        .then((res)=>{
+                
+                if(!res.ok){console.log("something is wrong");}
+                let reporting = document.getElementById("message");
+                reporting.innerText = "New Employee Name and Age Created";
+                console.log("reporting: ", reporting.innerText);
+                return res.json();
+                
+            }).then((processed) =>{
+                console.log("Processed is: ", processed);
+                
+        }//then arrow function close
+        );//then close
+        
+    }// Create Function Close
+    
+    function readName(event){// If name exists, return the age associated with the name from database.json to the reporting area
+        event.preventDefault();
+        console.log("Name Submit Button Clicked");
+        
+         let name =document.getElementById("name").value;
+         console.log("Value of name is ", name);
+         
+         fetch("/employees/" + name)
+         
+          .then((res)=>{
+                    return res.json();
+                })
+                
+                .then((processed)=>{
+                        let reporting = document.getElementById("message");
+                        
+                        if(processed.Error ){
+                            reporting.innerText = processed.Error;
+                            console.log("Name Not Found, Error", reporting.innerText);
+                        } else {
+                            reporting.innerText = processed.age;
+                            console.log("Name Exists, Reporting: ", reporting.innerText);
+                        }
+                    });  
+    }// readName function close
+    
+    function readAge(event){// If age exists, return the name associated with the age from database.json to the reporting area
+        event.preventDefault();
+        console.log("Age Submit Button Clicked");
+        
+        let age =document.getElementById("age").value;
+        console.log("Value of age is ", age);
+        fetch("/ages/" + age)
+        
+            .then((res)=>{
+                    return res.json();
+                })
+                
+                .then((processed)=>{
+                        let reporting = document.getElementById("message");
+                        
+                        if(processed.Error){
+                            reporting.innerText = processed.Error;
+                            console.log("Age Not Found, Error", reporting.innerText);
+                        } else {
+                            reporting.innerText = processed.name;
+                            console.log("Age Exists, Reporting: ", reporting.innerText);
+                        }
+                    });
+        }// readAge function close
+    
+</script>
+</body>
+</html>
