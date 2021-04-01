@@ -1,13 +1,16 @@
 import Express from "express";
 import fs from "fs";
+import cors from "cors";
 
 const App= Express();
 const port = 3010;
 
+App.use(cors());
+
 let databaseContents=fs.readFileSync("database.json");
 let database=JSON.parse(databaseContents);
 
-App.use("/", Express.static("public"));
+App.use("/", Express.static("client/build"));
 
 App.listen(port,()=>{
     console.log("Express Server is Running on Port 3010, localhost/3010 ;");
