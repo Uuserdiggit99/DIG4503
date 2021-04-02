@@ -26,7 +26,6 @@ class NameSearch extends React.Component{
                             console.log("Name Exists, Reporting: ", reporting.innerText);
                         }
                     }); 
-            //name.value = "";
             }//readName event close
     
     render(){

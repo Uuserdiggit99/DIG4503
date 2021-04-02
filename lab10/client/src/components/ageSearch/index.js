@@ -26,7 +26,6 @@ class AgeSearch extends React.Component{
                             console.log("Age Exists, Reporting: ", reporting.innerText);
                         }
                     });//then processed close
-        //age.value="";        
         }//readAge event close
         
     render(){
