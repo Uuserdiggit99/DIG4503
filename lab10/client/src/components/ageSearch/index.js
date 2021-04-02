@@ -43,7 +43,7 @@ class AgeSearch extends React.Component{
                             <input type="number" id="age"/>
                         </p>
 
-                        <button type="submit" id="ageSubmit" title="Submit">Submit Age</button>
+                        <button type="button" id="ageSubmit" title="Submit">Submit Age</button>
                     </fieldset>    
                 </form>
             </>

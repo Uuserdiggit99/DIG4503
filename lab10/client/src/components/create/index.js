@@ -3,8 +3,8 @@ import React from "react"
 
 class Create extends React.Component{
     
-    create(event){//Adds a new employee name and age to database.json. This should work now. I was getting 500 and 404 errors for a while because I did not realize I should have capitalized JSON.stringify in index.js. 
-        
+    create(event){
+
         event.preventDefault();
         console.log("Create Employee Submit Button Clicked");
         
@@ -35,7 +35,7 @@ class Create extends React.Component{
         
         return(
             <>
-                <form onSubmit="create(event)">
+                <form onSubmit={this.create}>
                     <fieldset>
                     
                         <legend>
@@ -53,8 +53,8 @@ class Create extends React.Component{
                     </fieldset>
                 </form>
             </>
-        );
-    }
+        );//return close
+    }//render close
     
 }//Create Class Close
 export default Create; 
