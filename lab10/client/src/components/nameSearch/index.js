@@ -1,4 +1,4 @@
-//nameSearch
+//NameSearch
 import React from "react";
 
 class NameSearch extends React.Component{
@@ -26,8 +26,8 @@ class NameSearch extends React.Component{
                             console.log("Name Exists, Reporting: ", reporting.innerText);
                         }
                     }); 
-                    name.value = "";
-    }//readName event close
+            //name.value = "";
+            }//readName event close
     
     render(){
         return(

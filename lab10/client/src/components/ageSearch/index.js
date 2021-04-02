@@ -1,3 +1,4 @@
+//AgeSearch
 import React from "react"
 
 class AgeSearch extends React.Component{
@@ -25,7 +26,7 @@ class AgeSearch extends React.Component{
                             console.log("Age Exists, Reporting: ", reporting.innerText);
                         }
                     });//then processed close
-        age.value="";        
+        //age.value="";        
         }//readAge event close
         
     render(){

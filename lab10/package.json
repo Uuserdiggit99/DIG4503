@@ -3,7 +3,9 @@
     "description": "Lab 10 Assignment",
     "main": "index.js",
     "scripts": {
-        "server": "nodemon index.js"
+        "server": "nodemon index.js",
+        "build": "cd client && npm run build",
+        "start": "concurrently 'npm:build' 'npm:server'"
     },
     "type": "module",
     "repository": {
@@ -13,6 +15,7 @@
     "dependencies": {
         "concurrently": "^6.0.0",
         "cors": "^2.8.5",
+        "express": "^4.17.1",
         "nodemon": "^2.0.7"
     }
 }
