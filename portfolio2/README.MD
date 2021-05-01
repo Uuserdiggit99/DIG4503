@@ -6,7 +6,7 @@ For this Portfolio 2 assignment, I revisited  Lab 11 from Week 13. I added a lot
 
 	...In the terminal/commandline of this project's directory.
 
-I used two npm packages to do this: Colors and CFonts.
+I used two npm packages for styling: Colors and CFonts.
 
     CFonts: https://www.npmjs.com/package/cfonts
 
