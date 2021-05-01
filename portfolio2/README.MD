@@ -4,7 +4,7 @@ For this Portfolio 2 assignment, I revisited  Lab 11 from Week 13. I added a lot
 			
 			node index.js
 
-	...In the terminal/commandline of this projects directory.
+	...In the terminal/commandline of this project's directory.
 
 I used two npm packages to do this: Colors and CFonts.
 
